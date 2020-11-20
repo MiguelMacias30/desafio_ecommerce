@@ -1,0 +1,23 @@
+<h1>MI Ecommerce</h1>
+
+
+<h3>productos!</h3>
+
+<table>
+	<thead>
+		<th>Foto</th>
+		<th>Nombre</th>
+		<th>Cuanto cuesta y precio</th>
+	</thead>
+
+	<tbody>
+		<% @products.each do |prod| %>
+		 <tr>
+		 	<td><%= image_tag(prod.photo, size: '200x150')%></td>
+		 	<td><%= prod.name%></td>
+		 	<td><%= number_to_currency(prod.price, unit: "CLP$", precision: 0)%></td>
+		 	<td><%= link_to 'agregar al carro', product_orders_path(prod.id), method: :post %></td>
+		 </tr>
+		 <% end %>
+	</tbody>
+</table>
